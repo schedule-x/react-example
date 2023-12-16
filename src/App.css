@@ -1,12 +1,8 @@
 .sx-react-calendar-wrapper {
   width: 100%;
   height: 800px;
-  max-height:90vh;
+  max-height: 90vh;
 }
-
-
-
-
 
 #root {
   width: 100%;
