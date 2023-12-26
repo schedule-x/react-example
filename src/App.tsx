@@ -19,12 +19,14 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 //
 // For best mobile experience, you might consider 100vw and 100% of the container element's height
 import '@schedule-x/theme-default/dist/index.css'
+import CustomTimeGridEvent from "./components/CustomTimeGridEvent.tsx";
+import CustomDateGridEvent from "./components/CustomDateGridEvent.tsx";
 
 function App() {
   const calendar = useCalendarApp({
     locale: 'zh-CN',
     selectedDate: '2023-12-16',
-    defaultView: viewMonthGrid.name,
+    defaultView: viewWeek.name,
     views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
     plugins: [createEventModalPlugin(), createDragAndDropPlugin()],
     events: [
@@ -34,12 +36,24 @@ function App() {
         start: '2023-12-16',
         end: '2023-12-16',
       },
+      {
+        id: '2',
+        title: 'Event 2',
+        start: '2023-12-16 03:00',
+        end: '2023-12-16 05:00',
+      },
     ],
   })
 
   return (
     <div>
-      <Calendar calendarApp={calendar} />
+      <Calendar
+        calendarApp={calendar}
+        customComponents={{
+          timeGridEvent: CustomTimeGridEvent,
+          dateGridEvent: CustomDateGridEvent,
+        }}
+      />
     </div>
   )
 }
