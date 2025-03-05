@@ -19,13 +19,17 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 //
 // For best mobile experience, you might consider 100vw and 100% of the container element's height
 import '@schedule-x/theme-default/dist/index.css'
-import CustomTimeGridEvent from "./components/CustomTimeGridEvent.tsx";
-import CustomDateGridEvent from "./components/CustomDateGridEvent.tsx";
+import CustomTimeGridEvent from './components/CustomTimeGridEvent.tsx'
+import CustomDateGridEvent from './components/CustomDateGridEvent.tsx'
 
+/**
+ * Save custom components in module-scoped object, or some other place where they won't rerender every time your
+ * component rerenders.
+ * */
 const customComponents = {
   timeGridEvent: CustomTimeGridEvent,
   dateGridEvent: CustomDateGridEvent,
-};
+}
 
 function App() {
   const calendar = useCalendarApp({
