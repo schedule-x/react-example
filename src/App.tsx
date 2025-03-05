@@ -1,5 +1,5 @@
 import './App.css'
-import { useCalendarApp, Calendar } from '@schedule-x/react'
+import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react'
 import {
   viewWeek,
   viewDay,
@@ -21,6 +21,11 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import '@schedule-x/theme-default/dist/index.css'
 import CustomTimeGridEvent from "./components/CustomTimeGridEvent.tsx";
 import CustomDateGridEvent from "./components/CustomDateGridEvent.tsx";
+
+const customComponents = {
+  timeGridEvent: CustomTimeGridEvent,
+  dateGridEvent: CustomDateGridEvent,
+};
 
 function App() {
   const calendar = useCalendarApp({
@@ -44,15 +49,11 @@ function App() {
       },
     ],
   })
-
   return (
     <div>
-      <Calendar
+      <ScheduleXCalendar
         calendarApp={calendar}
-        customComponents={{
-          timeGridEvent: CustomTimeGridEvent,
-          dateGridEvent: CustomDateGridEvent,
-        }}
+        customComponents={customComponents}
       />
     </div>
   )
