@@ -11,15 +11,17 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@schedule-x/drag-and-drop": "^2.21.0",
-    "@schedule-x/event-modal": "^2.21.0",
-    "@schedule-x/react": "^2.21.0",
-    "@schedule-x/theme-default": "^2.21.0",
+    "@schedule-x/drag-and-drop": "^3.7.3",
+    "@schedule-x/event-modal": "^4.9.1",
+    "@schedule-x/react": "^4.1.0",
+    "@schedule-x/theme-default": "^4.9.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "temporal-polyfill": "0.3.2",
+    "@schedule-x/calendar": "^4.9.1"
   },
   "devDependencies": {
-    "@schedule-x/prettier-config": "^0.2.0",
+    "@schedule-x/prettier-config": "^4.9.1",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",

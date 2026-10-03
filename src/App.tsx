@@ -21,6 +21,8 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import '@schedule-x/theme-default/dist/index.css'
 import CustomTimeGridEvent from './components/CustomTimeGridEvent.tsx'
 import CustomDateGridEvent from './components/CustomDateGridEvent.tsx'
+import { ExampleShell } from './ExampleShell.tsx'
+import 'temporal-polyfill/global'
 
 /**
  * Save custom components in module-scoped object, or some other place where they won't rerender every time your
@@ -34,7 +36,7 @@ const customComponents = {
 function App() {
   const calendar = useCalendarApp({
     locale: 'zh-CN',
-    selectedDate: '2023-12-16',
+    selectedDate: Temporal.PlainDate.from('2023-12-16'),
     defaultView: viewWeek.name,
     views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
     plugins: [createEventModalPlugin(), createDragAndDropPlugin()],
@@ -42,24 +44,25 @@ function App() {
       {
         id: '1',
         title: 'Event 1',
-        start: '2023-12-16',
-        end: '2023-12-16',
+        start: Temporal.PlainDate.from('2023-12-16'),
+        end: Temporal.PlainDate.from('2023-12-16'),
       },
       {
         id: '2',
         title: 'Event 2',
-        start: '2023-12-16 03:00',
-        end: '2023-12-16 05:00',
+        start: Temporal.ZonedDateTime.from('2023-12-16T03:00:00+00:00[UTC]'),
+        end: Temporal.ZonedDateTime.from('2023-12-16T05:00:00+00:00[UTC]'),
       },
     ],
+    timezone: 'UTC',
   })
   return (
-    <div>
+    <ExampleShell demo="React basics">
       <ScheduleXCalendar
         calendarApp={calendar}
         customComponents={customComponents}
       />
-    </div>
+    </ExampleShell>
   )
 }
 
